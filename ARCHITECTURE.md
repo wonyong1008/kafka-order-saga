@@ -81,7 +81,7 @@ kafka/
 3. **멱등 컨슈머**: 각 서비스가 `processed_events(event_id PK)` 테이블(H2)에 이벤트 ID를 기록,
    중복 수신 시 스킵 (Kafka at-least-once 특성 대응)
 4. **컨슈머 그룹**: 서비스별 고유 `group-id`
-5. **Kafka UI**: 토픽/메시지/컨슈머 그룹을 브라우저(`localhost:8080`)에서 직접 확인
+5. **Kafka UI**: 토픽/메시지/컨슈머 그룹을 브라우저(`localhost:8090`)에서 직접 확인
 
 ## 로컬 실행
 
@@ -104,7 +104,7 @@ curl -X POST localhost:8081/orders \
 curl localhost:8081/orders/{orderId}
 ```
 
-Kafka UI: http://localhost:8080
+Kafka UI: http://localhost:8090
 
 ## 검증 시나리오
 
