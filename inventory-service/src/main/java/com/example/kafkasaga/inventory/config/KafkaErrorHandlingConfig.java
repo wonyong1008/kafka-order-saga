@@ -9,7 +9,7 @@ import org.springframework.util.backoff.ExponentialBackOff;
 
 /**
  * 컨슈머 처리 실패 시 지수 백오프로 재시도(1s -> 2s -> 4s, 최대 3회)하고,
- * 그래도 실패하면 원본 토픽명 + ".DLT" 토픽으로 메시지를 전송한다(Dead Letter Queue).
+ * 그래도 실패하면 원본 토픽명 + "-dlt" 토픽으로 (DeadLetterPublishingRecoverer 기본 명명 규칙) 메시지를 전송한다(Dead Letter Queue).
  */
 @Configuration
 public class KafkaErrorHandlingConfig {

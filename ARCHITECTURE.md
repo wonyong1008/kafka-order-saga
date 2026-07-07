@@ -77,7 +77,7 @@ kafka/
 
 1. **Producer 신뢰성**: `enable.idempotence=true`, `acks=all` 명시적 설정
 2. **재시도 + DLQ**: `DefaultErrorHandler` + `ExponentialBackOff`(3회) → 최종 실패 시
-   `DeadLetterPublishingRecoverer`로 `<topic>.DLT`로 전송
+   `DeadLetterPublishingRecoverer`로 `<topic>-dlt`로 전송 (실제 확인된 기본 명명 규칙)
 3. **멱등 컨슈머**: 각 서비스가 `processed_events(event_id PK)` 테이블(H2)에 이벤트 ID를 기록,
    중복 수신 시 스킵 (Kafka at-least-once 특성 대응)
 4. **컨슈머 그룹**: 서비스별 고유 `group-id`
@@ -112,5 +112,5 @@ Kafka UI: http://localhost:8090
 - **재고 부족**: 재고보다 많은 수량 주문 → `inventory.failed` → `CANCELLED`
 - **결제 실패**: 결제 실패를 유발하는 조건(예: 특정 금액 이상) → `payment.failed` →
   재고 복원(보상 트랜잭션) → `CANCELLED`
-- **재시도/DLQ**: 컨슈머 예외 강제 발생 → 재시도 로그 확인 → 최종 실패 시 `<topic>.DLT`로 이관되는지
+- **재시도/DLQ**: 컨슈머 예외 강제 발생 → 재시도 로그 확인 → 최종 실패 시 `<topic>-dlt`로 이관되는지
   Kafka UI에서 확인
