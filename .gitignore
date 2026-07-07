@@ -22,3 +22,6 @@ out/
 *.db
 *.mv.db
 *.trace.db
+
+### Runtime data ###
+data/
