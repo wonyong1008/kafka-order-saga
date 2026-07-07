@@ -25,3 +25,6 @@ out/
 
 ### Runtime data ###
 data/
+
+### 개인 학습용 문서 (깃 제외) ###
+LEARNING_GUIDE.md
